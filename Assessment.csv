@@ -1,0 +1,5 @@
+"task","estimate","loggedTime"
+"setup models,routes,migrations",45,
+"create forms",30,
+"Frontend crud functionality / controller logic", 60
+"dockerize",120,
