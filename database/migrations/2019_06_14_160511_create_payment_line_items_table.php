@@ -14,6 +14,7 @@ class CreatePaymentLineItemsTable extends Migration
     public function up()
     {
         Schema::create('payment_line_items', function (Blueprint $table) {
+			$table->bigIncrements('id');
 			$table->integer('invoice_id');
 			$table->enum('payment_type', ['Cash', 'Cheque', 'Credit'])->default('Cash');
 			$table->float('amount', 8, 2)->default(0.00);

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
+	public $guarded = ['id'];
     public function purchase_line_items()
     {
         return $this->hasMany('App\PurchaseLineItems', 'invoice_id');
@@ -16,8 +17,4 @@ class Invoice extends Model
         return $this->hasMany('App\PaymentLineItems', 'invoice_id');
     }
 	
-	public function store()
-    {
-        return $this->hasOne('App\Store', 'id', 'store_id');
-    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('invoice','InvoiceController');
+Route::resource('payment_lineitems','PaymentLineItemController');
+Route::resource('purchase_lineitems','PurchaseLineItemController');
+
+Route::get('products', function (Request $request) {
+	return \App\Product::all()->toArray();
+});
+
+Route::post('search', function (Request $request) {
+	$Invoices = \App\Invoice::where('invoice_num', 'like', "%" . $request->term . "%")->paginate();
+    return $Invoices->toArray();
+});
+

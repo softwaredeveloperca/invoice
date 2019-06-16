@@ -14,6 +14,7 @@ class CreatePurchaseLineItemsTable extends Migration
     public function up()
     {
         Schema::create('purchase_line_items', function (Blueprint $table) {
+			$table->bigIncrements('id');
             $table->integer('product_id');
 			$table->integer('invoice_id');
 			$table->float('cost', 8, 2)->default(0.00);

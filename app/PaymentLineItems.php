@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaymentLineItems extends Model
 {
+	public $guarded=['id'];
 	/**
 	 * Retrieves enum fields for a column
 	 *
 	 * @param string $column Column name
 	 *
 	 * @return array
-	 *
-	 * NOTE: I use this in my projects but not the original author.  
      *
 	 */
     public static function getEnumValues ($column) {
@@ -29,6 +28,5 @@ class PaymentLineItems extends Model
 		// Return matches
 		return isset($matches[1]) ? $matches[1] : [];
 	}
-	
 	
 }
