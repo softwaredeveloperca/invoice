@@ -1,5 +1,4 @@
-"task","estimate","loggedTime"
-"setup models,routes,migrations",45,40
-"create forms",30,
-"Frontend crud functionality / controller logic", 60
-"dockerize",120,
+"task","hourly_estimate","loggedTime"
+"setup models,routes,migrations",1,3
+"create forms",.5,3.5
+"Frontend crud functionality / controller logic",1,7
