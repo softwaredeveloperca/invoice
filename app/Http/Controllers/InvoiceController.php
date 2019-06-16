@@ -15,6 +15,7 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = Invoice::paginate();
+
     	return $invoices;
     }
 
@@ -61,7 +62,7 @@ class InvoiceController extends Controller
 		);
 		return $invoice->id;
     }
-
+	
     /**
      * Display the specified resource.
      *

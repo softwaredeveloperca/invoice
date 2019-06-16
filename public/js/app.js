@@ -1991,8 +1991,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.showInvoices();
@@ -2073,19 +2071,10 @@ __webpack_require__.r(__webpack_exports__);
       this.error_msg = '';
       this.search_term = '';
       axios.get('/lara/icepick/public/api/invoice').then(function (res) {
-        console.log(res.data);
         that.invoices = res.data;
       })["catch"](function (err) {
         console.log(err);
         that.error_msg = err;
-      });
-    },
-    fetchInvoices: function fetchInvoices() {
-      var _this3 = this;
-
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/lara/icepick/public/api/invoices?page=' + page).then(function (response) {
-        _this3.invoices = response.data;
       });
     },
     createInvoice: function createInvoice() {
@@ -2132,28 +2121,28 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     deletePurchaseLineItem: function deletePurchaseLineItem(id) {
-      var _this4 = this;
+      var _this3 = this;
 
       var that = this;
       that.error_msg = '';
 
       if (confirm("Do you really want to delete?")) {
         axios["delete"]('/lara/icepick/public/api/purchase_lineitems/' + id).then(function (resp) {
-          _this4.loadPurchaseLineItem();
+          _this3.loadPurchaseLineItem();
         })["catch"](function (error) {
           that.error_msg = error;
         });
       }
     },
     deletePaymentLineItem: function deletePaymentLineItem(id) {
-      var _this5 = this;
+      var _this4 = this;
 
       var that = this;
       that.error_msg = '';
 
       if (confirm("Do you really want to delete?")) {
         axios["delete"]('/lara/icepick/public/api/payment_lineitems/' + id).then(function (resp) {
-          _this5.loadPaymentLineItem();
+          _this4.loadPaymentLineItem();
         })["catch"](function (error) {
           that.error_msg = error;
         });
@@ -37664,8 +37653,6 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(invoice.date_due))]),
                             _vm._v(" "),
-                            _c("td"),
-                            _vm._v(" "),
                             _c("td", [
                               _c(
                                 "div",
@@ -38397,7 +38384,7 @@ var render = function() {
                     _vm._l(_vm.purchase_lineitems, function(purchase) {
                       return purchase !== null
                         ? _c("tr", [
-                            _c("td", [_vm._v(_vm._s(purchase.id))]),
+                            _c("td", [_vm._v(_vm._s(purchase.product.name))]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(purchase.cost))]),
                             _vm._v(" "),
@@ -38646,8 +38633,6 @@ var staticRenderFns = [
         _c("th", [_vm._v("Date Issued")]),
         _vm._v(" "),
         _c("th", [_vm._v("Date Due")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Total")]),
         _vm._v(" "),
         _c("th")
       ])

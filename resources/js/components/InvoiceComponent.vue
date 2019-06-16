@@ -34,7 +34,6 @@
 							<th>City</th>
 							<th>Date Issued</th>
 							<th>Date Due</th>
-							<th>Total</th>
 							<th></th>
 						  </tr>
 						</thead>
@@ -46,7 +45,6 @@
 							<td>{{invoice.city}}</td>
 							<td>{{invoice.date_issued}}</td>
 							<td>{{invoice.date_due}}</td>
-							<td></td>
 							<td>
 								<div class="btn-group" role="group" aria-label="">
 								  <button type="button" v-on:click="editInvoice(invoice.id)" class="btn btn-primary">Edit</button>
@@ -189,7 +187,7 @@
 						</thead>
 						<tbody>
 						  <tr v-for="purchase in purchase_lineitems" v-if="purchase !== null">
-							<td>{{purchase.id}}</td>
+							<td>{{purchase.product.name}}</td>
 							<td>{{purchase.cost}}</td>
 							<td>{{purchase.qty}}</td>
 							<td>{{purchase.tax_rate}}</td>
@@ -361,20 +359,13 @@
 				this.search_term='';
 				axios.get('/lara/icepick/public/api/invoice')
 						.then(res => {
-						console.log(res.data);
 						that.invoices=res.data;
 					}).catch(err => {
 					console.log(err)
 					that.error_msg=err;
             	});
 				
-			}, 
-			fetchInvoices: function (page=1) {
-				axios.get('/lara/icepick/public/api/invoices?page=' + page)
-				.then(response => {
-					this.invoices = response.data;
-				});
-			}, 
+			},  
 			createInvoice: function () {
 				this.stage = 'create';
 				this.error_msg='';
